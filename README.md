@@ -311,7 +311,7 @@ a unique id for the partition (and not the filesystem like UUID) and this is a
 somewhat recent addition to the kernel for msdos partition tables (it's actually
 a GPT thing). We'll find the id like this:
 ```bash
-$ fdisk -l ../image | grep "Disk identifier"
+$ fdisk -l ../image | grep "0x"
 Disk identifier: 0x4f4abda5
 ```
 Then we drop the 0x and append the partition number as two digit hexidecimal. An

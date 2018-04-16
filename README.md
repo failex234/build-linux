@@ -145,7 +145,7 @@ build-linux-libre comes with US, UK, french, belgium and german keymaps but
 if you use another keymap you can generate one on your current system by 
 issuing
 ```bash
-$ loadkeys -b <yourkeymap> > filesystems/<yourkeymap>.bmap
+$ loadkeys -b [yourkeymap] > filesystems/[yourkeymap].bmap
 ```
 
 Finally you have to add your keymaps name to line 1 in the Makefile in

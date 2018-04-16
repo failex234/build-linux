@@ -13,10 +13,10 @@ getkernel:
 	@echo
 	@echo If you don\'t care press any key to continue.
 	@read temp
-	wget $(KERNEL_URL)
+	ls linux-libre-$(KERNEL_VERSION)-gnu.tar.xz || wget $(KERNEL_URL)
 
 kernelpre: getkernel
-	tar -xf linux-$(KERNEL_VERSION).tar.xz
+	tar -xf linux-libre-$(KERNEL_VERSION)-gnu.tar.xz
 	cp kernel-config linux-$(KERNEL_VERSION)/.config
 
 kernel: kernelpre kernel-config
@@ -31,7 +31,7 @@ getbusybox:
 	@echo
 	@echo If you don\'t care press any key to continue.
 	@read temp
-	wget $(BUSYBOX_URL)
+	ls busybox-$(BUSYBOX_VERSION).tar.bz2 || wget $(BUSYBOX_URL)
 
 busyboxpre: getbusybox
 	tar -xf busybox-$(BUSYBOX_VERSION).tar.bz2

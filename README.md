@@ -137,6 +137,20 @@ Be aware that even though there is a libc standard, musl is not always a
 drop-in replacement for glibc if the application you're compiling uses glibc
 specific things.
 
+
+Generating keymaps
+----------------------
+
+build-linux-libre comes with US, UK, french, belgium and german keymaps but
+if you use another keymap you can generate one on your current system by 
+issuing
+```bash
+$ loadkeys -b <yourkeymap> > filesystems/<yourkeymap>.bmap
+```
+
+Finally you have to add your keymaps name to line 1 in the Makefile in
+filesystems/
+
 Building the Disk Image
 -----------------------
 
@@ -239,7 +253,7 @@ of some use to us later.
 $ cp ../filesystem/{passwd,shadow,group,issue,profile,locale.sh,hosts,fstab} etc
 $ install -Dm755 ../filesystem/simple.script usr/share/udhcpc/default.script
 # optional
-$ install -Dm644 ../filesystem/be-latin1.bmap usr/share/keymaps/be-latin1.bmap
+$ install -Dm644 ../filesystem/*.bmap usr/share/keymaps/*.bmap
 ```
 These are the basic configuration files for a UNIX system. The .script file is
 required for running a dhcp client, which we'll get to later. The keymap file is

@@ -36,7 +36,7 @@ getbusybox:
 busyboxpre: getbusybox
 	tar -xf busybox-$(BUSYBOX_VERSION).tar.bz2
 
-busybox: busybox-pre bb-config
+busybox: busyboxpre bb-config
 	sed '1,1i#include <sys/resource.h>' -i busybox-$(BUSYBOX_VERSION)/include/libbb.h
 	cp bb-config busybox-$(BUSYBOX_VERSION)/.config
 	$(MAKE) CC=musl-gcc -C busybox-$(BUSYBOX_VERSION)

@@ -253,7 +253,8 @@ of some use to us later.
 $ cp ../filesystem/{passwd,shadow,group,issue,profile,locale.sh,hosts,fstab} etc
 $ install -Dm755 ../filesystem/simple.script usr/share/udhcpc/default.script
 # optional
-$ install -Dm644 ../filesystem/*.bmap usr/share/keymaps/*.bmap
+$ cp ../filesystem/*.bmap usr/share/keymaps/
+$ chmod 644 usr/share/keymaps/*.bmap
 ```
 These are the basic configuration files for a UNIX system. The .script file is
 required for running a dhcp client, which we'll get to later. The keymap file is
@@ -442,7 +443,8 @@ echo /sbin/mdev > /proc/sys/kernel/hotplug
 ip link set up dev lo
 
 # you could add the following to change the keyboard layout at boot
-loadkmap < /usr/share/keymaps/be-latin1.bmap
+loadkmap < /usr/share/keymaps/us.bmap
+# make sure to set the keymap to your preferred one!
 
 # mounts all filesystems in /etc/fstab
 mount -a
